@@ -16,5 +16,5 @@ b)Display only those that match the entered class.
 3. Add a button that, when clicked, changes the text color of a specified element to a
 random color, using a fade-out and fade-in animation.
 
-#Q3) Write a file using HTML, CSS, Javascript and AJAX file using XHR to read text file and displays the response on the page
+# Q3) Write a file using HTML, CSS, Javascript and AJAX file using XHR to read text file and displays the response on the page
 
