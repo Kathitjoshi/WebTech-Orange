@@ -1,0 +1,281 @@
+<!-- TASK 1
+Q1) Write a code to get the output shown below using SVG/Canvas which
+include:
+1. A rectangle with border and stroke
+2. An ellipse with linear gradient
+3. An arc using canvas
+4. A line -->
+
+<!-- Assignment 3 in react folder -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas and SVG Task</title>
+    <style>
+        .canvas-container {
+            display: flex;
+            gap: 0px; 
+        }
+        canvas, svg {
+            border: 1px solid black;
+        }
+        body {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .wrapper {
+            background-color: white;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h2>SVG/Canvas Shapes</h2>
+
+     SVG for Rectangle, Ellipse, Line
+    <svg width="300" height="150">
+         Rectangle with yellow fill and red border 
+        <rect x="10" y="10" width="100" height="50" fill="yellow" stroke="red" stroke-width="3"></rect>
+        
+        Ellipse with linear gradient (red to green) 
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:red;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:green;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <ellipse cx="200" cy="35" rx="60" ry="30" fill="url(#grad1)" />
+    </svg>
+
+    <div class="canvas-container">
+        Canvas for Arc 
+        <canvas id="arcCanvas" width="150" height="150"></canvas>
+
+        Canvas for Diagonal Line 
+        <canvas id="lineCanvas" width="150" height="150"></canvas>
+    </div>
+</div>
+
+<script>
+    
+    var arcCanvas = document.getElementById('arcCanvas');
+    var arcCtx = arcCanvas.getContext('2d');
+    
+    arcCtx.beginPath();
+    arcCtx.arc(75, 75, 40, 0, Math.PI, false); 
+    arcCtx.fillStyle = 'blue';
+    arcCtx.fill();
+    arcCtx.stroke();
+
+    
+    var lineCanvas = document.getElementById('lineCanvas');
+    var lineCtx = lineCanvas.getContext('2d');
+    
+    lineCtx.beginPath();
+    lineCtx.moveTo(10, 140);
+    lineCtx.lineTo(140, 10);
+    lineCtx.strokeStyle = 'brown';
+    lineCtx.lineWidth = 10;
+    lineCtx.stroke();
+</script>
+
+</body>
+</html> -->
+
+
+<!-- Q2) Write jQuery code to accomplish the following:
+1. Create a button that, when clicked, will cause the text in a specified paragraph to
+first fade out, slide up and then immediately slide down, demonstrating the use of
+jQuery method chaining to create a smooth animation effect.
+2. Create an input field to filter elements by class. When the user clicks the &quot;Filter&quot;
+button,
+a)Hide all elements and
+b)Display only those that match the entered class.
+3. Add a button that, when clicked, changes the text color of a specified element to a
+random color, using a fade-out and fade-in animation. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Web Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+       
+        .container {
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid black;
+            width: 200px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .text {
+            font-size: 20px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Filter Styles */
+        .hidden {
+            display: none;
+        }
+
+        h3 {
+            margin-top: 30px;
+        }
+
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="container">
+        <p id="text">Method chaining</p>
+        <button id="btn">Click for Effect</button>
+    </div>
+
+    Color Change Section 
+    <div class="container">
+        <p class="text" id="targetText">Web Tech.<br>Plain text</p>
+        <button id="changeColorBtn">Change Color</button>
+    </div>
+
+     Filter Classes Section 
+    <h3>III Sem Subjects</h3>
+    <input type="text" id="filterInput" placeholder="Enter class to filter">
+    <button>Filter</button>
+
+    <ul id="classList">
+        <li class="intro">DDCO</li>
+        <li class="intro">DSA</li>
+        <li class="subject">MCSE</li>
+        <li class="intro">WT</li>
+        <li class="subject">AFLL</li>
+    </ul>
+
+    <script>
+        // jQuery Method Chaining
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#text").fadeOut(500) // Fade out effect
+                        .slideUp(500) // Slide up effect
+                        .slideDown(500); // Slide down effect
+            });
+        });
+
+      
+        document.getElementById('changeColorBtn').addEventListener('click', function () {
+            const targetText = document.getElementById('targetText');
+
+            
+            targetText.style.opacity = '0';
+
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+        
+            setTimeout(function () {
+                targetText.style.color = randomColor;
+
+                // Fade in effect
+                targetText.style.opacity = '1';
+            }, 500);
+        });
+
+        
+        $(document).ready(function() {
+    $('button').click(function() {
+        const inputClass = $('input').val().trim();
+        $('li').hide();
+        $('.' + inputClass).show();
+    });
+});
+
+
+    </script>
+
+</body>
+</html>
+
+<!-- Q3) Write a file using HTML, CSS, Javascript and AJAX file using XHR to read text file and displays the response on the page -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <style>
+        h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question3</title>
+</head>
+<body>
+    <div class="container">
+        <h3 id="content"> </h3>
+        <button id="clickbutton">Click To Read Text File</button>
+    </div>
+</body>
+<script>
+    document.getElementById('clickbutton').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'q3.txt', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.getElementById('content').innerText = xhr.responseText;
+        } else {
+            document.getElementById('content').innerText = 'Error loading file';
+        }
+    };
+    xhr.send();
+});
+</script>
+</html> -->
+
