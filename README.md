@@ -1,4 +1,4 @@
-# Webtech-Orange
+# Webtech-Tutorials
 # Q1) Write a code to get the output shown below using SVG/Canvas which include:
 1.	A rectangle with border and stroke
 2.	An ellipse with linear gradient
